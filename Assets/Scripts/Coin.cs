@@ -32,7 +32,13 @@ public class Coin : MonoBehaviour
 
         if(Coin.coinsCount<=0)
         {
-            Debug.Log("El Juego ha terminado, has ganado!");
+            GameObject timer = GameObject.Find("GameTimer");
+            Destroy(timer);
+            GameObject[] fireworks = GameObject.FindGameObjectsWithTag("Fireworks");
+            foreach(GameObject firework in fireworks)
+            {
+                firework.GetComponent<ParticleSystem>().Play();
+            }
         }
     }
 }
